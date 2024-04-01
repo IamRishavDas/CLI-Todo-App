@@ -6,6 +6,9 @@ Commands ---->
     REMOVE ("remove", "remove <task name>"),
     MARK   ("mark",   "mark <task name> -s <COMPLETED || INCOMEPLETE>"),
     SHOW   ("show",   "show <optional>  -s <COMPLETED || INCOMEPLETE>"),
-    EXIT   ("exit",   "no attribute needed");
+    SAVE   ("save",   "save no attribute needed"),
+    LOAD   ("load",   "load no attribute needed"),
+    DELETE ("delete,  "delete no attribute needed"),
+    EXIT   ("exit",   "exit no attribute needed")
 
 --------------------------------------------------------------------------------------------------------------------

@@ -17,6 +17,7 @@ public class TaskManagement {
 
     private static List<Task> tasks = new ArrayList<Task>(
 
+        // temproray testing data
             Arrays.asList(
                     new Task("First", "Description1", Priority.LOW),
                     new Task("Second", "Description2", Priority.LOW),
@@ -35,12 +36,12 @@ public class TaskManagement {
         final String fileName = "Store.dat";
 
         try {
-            // File output streams
-            FileOutputStream fileOutputStream = new FileOutputStream(filePath + fileName);
+            
+            FileOutputStream fileOutputStream = new FileOutputStream(filePath + fileName); // Store.dat File
             ObjectOutputStream out = new ObjectOutputStream(fileOutputStream);
-            // Write the list object to the stream
+            
             out.writeObject(tasks);
-            // Close the streams
+            
             out.close();
             fileOutputStream.close();
         } catch (IOException e) {
@@ -56,12 +57,12 @@ public class TaskManagement {
         final String fileName = "Store.dat";
 
         try {
-            // Open streams (similar to serialization)
-            FileInputStream fileInputStream = new FileInputStream(filePath + fileName);
+            
+            FileInputStream fileInputStream = new FileInputStream(filePath + fileName); // Store.dat File
             ObjectInputStream in = new ObjectInputStream(fileInputStream);
-            // Read the object from the stream
+            
             tasks = (ArrayList<Task>) in.readObject();
-            // Close the streams
+            
             in.close();
             fileInputStream.close();
         } catch (EOFException eof) {
@@ -82,12 +83,10 @@ public class TaskManagement {
         final String filePath = "C:\\Users\\Risha\\Desktop\\CLI Todo App\\CLI-Todo-App\\todo\\src\\main\\resources\\";
         final String fileName = "Store.dat";
 
-        // File object representing the .dat file
-        File datFile = new File(filePath + fileName);
+        File datFile = new File(filePath + fileName); //Store.dat File
 
-        // Check if the file exists
         if (datFile.exists()) {
-            // Delete the file
+            
             boolean deleted = datFile.delete();
             if (deleted) {
                 System.out.println("PREVIOUS SESSION DELETED SUCCESSFULLY!!");
@@ -106,11 +105,9 @@ public class TaskManagement {
         final String filePath = "C:\\Users\\Risha\\Desktop\\CLI Todo App\\CLI-Todo-App\\todo\\src\\main\\resources\\";
         final String fileName = "Store.dat";
 
-        // File object representing the new .dat file
         File newDatFile = new File(filePath + fileName);
 
         try {
-            // Attempt to create the file
             boolean created = newDatFile.createNewFile();
             if (created) {
                 System.out.println("NEW SESSION FILE CREATE SUCCESSFULLY!!");
