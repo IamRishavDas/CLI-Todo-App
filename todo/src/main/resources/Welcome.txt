@@ -1,0 +1,11 @@
+---------------------------------------------- Welcome to Command Line TODO App -------------------------------------
+
+Commands ---->
+
+    ADD    ("add",    "add <task name> <optional> -d <description> -p <priority = LOW || MEDIUM || HIGH>"),
+    REMOVE ("remove", "remove <task name>"),
+    MARK   ("mark",   "mark <task name> -s <COMPLETED || INCOMEPLETE>"),
+    SHOW   ("show",   "show <optional>  -s <COMPLETED || INCOMEPLETE>"),
+    EXIT   ("exit",   "no attribute needed");
+
+--------------------------------------------------------------------------------------------------------------------
