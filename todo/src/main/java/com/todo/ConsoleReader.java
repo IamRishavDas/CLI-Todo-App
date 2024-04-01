@@ -21,8 +21,8 @@ public class ConsoleReader {
         }
     }
     public void showWelcomeScreen() throws FileNotFoundException{
-        String filePath = "C:\\Users\\Risha\\Desktop\\CLI Todo App\\CLI-Todo-App\\todo\\src\\main\\resources\\";
-        String fileName = "Welcome.txt";
+        final String filePath = "C:\\Users\\Risha\\Desktop\\CLI Todo App\\CLI-Todo-App\\todo\\src\\main\\resources\\";
+        final String fileName = "Welcome.txt";
         File file = new File(filePath + fileName);
         Scanner scanner = new Scanner(file);
         while (scanner.hasNext()) {

@@ -1,6 +1,9 @@
 package com.todo;
 
 import java.util.List;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -15,6 +18,19 @@ public class TaskManagement {
     );
     public List<Task> getTasks(){
         return TaskManagement.tasks;
+    }
+
+    public static void saveTasks(){
+        final String filePath = "C:\\Users\\Risha\\Desktop\\CLI Todo App\\CLI-Todo-App\\todo\\src\\main\\resources\\";
+        final String fileName = "Store.dat";
+        try{
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filePath + fileName));
+            out.writeObject(tasks);
+            out.close();
+        } catch(IOException ex){
+            System.out.println("Problem while storing the data in the file!!");
+            ex.printStackTrace();
+        }
     }
 
     public static void addTask(String command){

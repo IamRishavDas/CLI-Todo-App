@@ -1,5 +1,7 @@
 package com.todo;
 
+import java.io.Serializable;
+
 enum Status{
     COMPLETED,
     INCOMEPLETE
@@ -11,7 +13,7 @@ enum Priority{
     HIGH
 }
 
-public class Task implements Comparable<Task>{
+public class Task implements Comparable<Task>, Serializable{
 
     private String name;
     private String description;
