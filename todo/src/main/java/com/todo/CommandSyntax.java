@@ -8,7 +8,7 @@ public enum CommandSyntax {
     SAVE     ("save",     "save no attribute needed",                                                                 "^\\s*\\bsaves?\\b$"),
     LOAD     ("load",     "load no attribute needed",                                                                 "^\\s*\\bloads?\\b$"),
     DELETE   ("delete",   "delete no attribute needed",                                                               "^\\s*\\bdeletes?\\b$"),
-    EXIT     ("exit",     " exit no attribute needed",                                                                "^\\s*\\bexits?\\b$");
+    EXIT     ("exit",     "exit no attribute needed",                                                                 "^\\s*\\bexits?\\b$");
 
     private String commandName;
     private String syntax;

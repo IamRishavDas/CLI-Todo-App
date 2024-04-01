@@ -11,4 +11,7 @@ Commands ---->
     DELETE ("delete,  "delete no attribute needed"),
     EXIT   ("exit",   "exit no attribute needed")
 
+
+    Note: Only the SHOW, LOAD, DELETE, EXIT is implementes partially for Temporary Data Defined in the program
+
 --------------------------------------------------------------------------------------------------------------------
