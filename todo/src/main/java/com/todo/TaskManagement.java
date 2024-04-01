@@ -19,10 +19,10 @@ public class TaskManagement {
 
         // temproray testing data
             Arrays.asList(
-                    new Task("First", "Description1", Priority.LOW),
-                    new Task("Second", "Description2", Priority.LOW),
-                    new Task("Third", "Description3", Priority.HIGH),
-                    new Task("Forth", "Description4", Priority.MEDIUM))
+                    new Task("First",  "Description1",  Priority.LOW),
+                    new Task("Second", "Description2",  Priority.LOW),
+                    new Task("Third",  "Description3",  Priority.HIGH),
+                    new Task("Forth",  "Description4",  Priority.MEDIUM))
 
     );
 
