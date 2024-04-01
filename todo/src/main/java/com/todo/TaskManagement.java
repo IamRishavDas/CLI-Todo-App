@@ -10,19 +10,19 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-// import java.util.Arrays;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class TaskManagement {
 
     private static List<Task> tasks = new ArrayList<Task>(
-    /*
-     * Arrays.asList(
-     * new Task("First", "Description1", Priority.LOW),
-     * new Task("Second", "Description2", Priority.LOW),
-     * new Task("Third", "Description3", Priority.HIGH),
-     * new Task("Forth", "Description4", Priority.MEDIUM)
-     * )
-     */
+
+            Arrays.asList(
+                    new Task("First", "Description1", Priority.LOW),
+                    new Task("Second", "Description2", Priority.LOW),
+                    new Task("Third", "Description3", Priority.HIGH),
+                    new Task("Forth", "Description4", Priority.MEDIUM))
+
     );
 
     public List<Task> getTasks() {
@@ -68,7 +68,7 @@ public class TaskManagement {
             System.out.println("WARNING: PREVIOUS SESSION DATA IS NOT STORED!!");
         } catch (FileNotFoundException e) {
             System.out.println("THE PREVIOUS SESSION FILE IS MISSING!!");
-        }catch (IOException e) {
+        } catch (IOException e) {
             System.out.println("WARNING: SOMETHING WRONG IS HAPPENING I DON'T KNOW WHAT IS THE ACTUAL PROBLEM");
         } catch (ClassNotFoundException ex) {
             System.out.println("WARING: THE FOLLOWING CLASS IS NOT FOUND!!");
@@ -120,7 +120,6 @@ public class TaskManagement {
         } catch (IOException e) {
             System.out.println("ERROR: WHILE CREATING NEW SESSION FILE -> " + e.getMessage());
         }
-
         return;
     }
 
@@ -137,6 +136,7 @@ public class TaskManagement {
     }
 
     public static void showTasks(String command) {
+        Collections.sort(tasks);
         for (Task task : tasks) {
             System.out.println(task);
         }
