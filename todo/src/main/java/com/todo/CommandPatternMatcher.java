@@ -15,8 +15,14 @@ public class CommandPatternMatcher {
             return CommandSyntax.MARK.getCommandName();
         } else if(isPatternMatched(CommandSyntax.EXIT.getRegularExpression(), Pattern.CASE_INSENSITIVE, command)){
             return CommandSyntax.EXIT.getCommandName();
+        } else if(isPatternMatched(CommandSyntax.SAVE.getRegularExpression(), Pattern.CASE_INSENSITIVE, command)){
+            return CommandSyntax.SAVE.getCommandName();
+        } else if(isPatternMatched(CommandSyntax.LOAD.getRegularExpression(), Pattern.CASE_INSENSITIVE, command)){
+            return CommandSyntax.LOAD.getCommandName();
+        } else if(isPatternMatched(CommandSyntax.DELETE.getRegularExpression(), Pattern.CASE_INSENSITIVE, command)){
+            return CommandSyntax.DELETE.getCommandName();
         } else {
-            return "";
+            return "!ILLEGAL MODIFIER GIVEN!";
         }
 
     }

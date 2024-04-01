@@ -8,6 +8,7 @@ public class ConsoleReader {
     public ConsoleReader() throws FileNotFoundException{
         boolean exit = false;
         showWelcomeScreen();
+        // TaskManagement.loadTasks();
         while (!exit) {
             String command = System.console().readLine(":");
             switch (CommandPatternMatcher.getCommandString(command)) {
@@ -15,6 +16,9 @@ public class ConsoleReader {
                 case "show"    -> TaskManagement.showTasks(command);
                 case "mark"    -> TaskManagement.markTask(command);
                 case "remove"  -> TaskManagement.removeTask(command);
+                case "save"    -> TaskManagement.saveTasks();
+                case "load"    -> TaskManagement.loadTasks();
+                case "delete"  -> TaskManagement.deleteSavedTasks();
                 case "exit"    -> exit = true;         
                 default        -> System.out.println("NOT SUITABLE COMMAND FOUND!!");
             }
