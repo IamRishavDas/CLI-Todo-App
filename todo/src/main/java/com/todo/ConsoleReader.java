@@ -2,10 +2,14 @@ package com.todo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
+import com.todo.PatternMatcher.CommandPatternMatcher;
+import com.todo.TaskOperations.TaskManagement;
+
 public class ConsoleReader {
-    public ConsoleReader() throws FileNotFoundException{
+    public ConsoleReader() throws IOException{
         boolean exit = false;
         showWelcomeScreen();
         // TaskManagement.loadTasks();
@@ -19,6 +23,7 @@ public class ConsoleReader {
                 case "save"    -> TaskManagement.saveTasks();
                 case "load"    -> TaskManagement.loadTasks();
                 case "delete"  -> TaskManagement.deleteSavedTasks();
+                case "clear"   -> TaskManagement.clearTerminal();
                 case "exit"    -> exit = true;         
                 default        -> System.out.println("NOT SUITABLE COMMAND FOUND!!");
             }

@@ -1,4 +1,4 @@
-package com.todo;
+package com.todo.Syntax;
 
 public enum CommandSyntax {
     ADD      ("add",      "add <task name> <optional> -d <description> -p <priority = LOW || MEDIUM || HIGH>",        "^\\s*\\bADD\\s*.*|^\\add\\s*.*"),
@@ -8,6 +8,7 @@ public enum CommandSyntax {
     SAVE     ("save",     "save no attribute needed",                                                                 "^\\s*\\bsaves?\\b$"),
     LOAD     ("load",     "load no attribute needed",                                                                 "^\\s*\\bloads?\\b$"),
     DELETE   ("delete",   "delete no attribute needed",                                                               "^\\s*\\bdeletes?\\b$"),
+    CLEAR    ("clear",    "clear no attribute needed",                                                                "^\\s*\\bclears?\\b$"),
     EXIT     ("exit",     "exit no attribute needed",                                                                 "^\\s*\\bexits?\\b$");
 
     private String commandName;

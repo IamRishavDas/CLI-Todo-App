@@ -1,24 +1,14 @@
-package com.todo;
+package com.todo.TaskOperations;
 
 import java.io.Serializable;
 
-enum Status{
-    COMPLETED,
-    INCOMEPLETE
-}
-
-enum Priority{
-    LOW,
-    MEDIUM,
-    HIGH
-}
 
 public class Task implements Comparable<Task>, Serializable{
 
     private String name;
     private String description;
-    private Priority priority = Priority.LOW;
-    private Status isComplete = Status.INCOMEPLETE;
+    private TaskPriority priority = TaskPriority.LOW;
+    private TaskStatus isComplete = TaskStatus.INCOMEPLETE;
 
     public Task(String name){
         this.name = name;
@@ -27,33 +17,33 @@ public class Task implements Comparable<Task>, Serializable{
         this(name);
         this.description = description;
     }
-    public Task(String name, String description, Priority priority){
+    public Task(String name, String description, TaskPriority priority){
         this(name, description);
         this.priority = priority;
     }
 
     public String getName() {return this.name;}
     public String getDescription() {return this.description;}
-    public Priority getPriority() {return this.priority;}
-    public Status getStatus() {return this.isComplete;}
+    public TaskPriority getPriority() {return this.priority;}
+    public TaskStatus getStatus() {return this.isComplete;}
 
-    public void setPriority(Priority priority){
+    public void setPriority(TaskPriority priority){
         this.priority = priority;
     }
-    public void setStatus(Status status){
+    public void setStatus(TaskStatus status){
         this.isComplete = status;
     }
 
     @Override
     public int compareTo(Task task){
-        if(this.getPriority() == Priority.LOW){
-            if(task.getPriority() == Priority.MEDIUM || task.getPriority() == Priority.HIGH) {
+        if(this.getPriority() == TaskPriority.LOW){
+            if(task.getPriority() == TaskPriority.MEDIUM || task.getPriority() == TaskPriority.HIGH) {
                 return 1;
             } else {
                 return -1;
             }
-        } else if(this.getPriority() == Priority.MEDIUM){
-            if(task.getPriority() == Priority.HIGH){
+        } else if(this.getPriority() == TaskPriority.MEDIUM){
+            if(task.getPriority() == TaskPriority.HIGH){
                 return 1;
             } else {
                 return -1;

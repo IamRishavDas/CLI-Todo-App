@@ -1,6 +1,10 @@
-package com.todo;
+package com.todo.TaskOperations;
 
 import java.util.List;
+
+import com.todo.PatternMatcher.AttributePatternMatcher;
+import com.todo.Syntax.AttributeSyntax;
+
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,12 +21,12 @@ public class TaskManagement {
 
     private static List<Task> tasks = new ArrayList<Task>(
 
-        // temproray testing data
+            // temproray testing data
             Arrays.asList(
-                    new Task("First",  "Description1",  Priority.LOW),
-                    new Task("Second", "Description2",  Priority.LOW),
-                    new Task("Third",  "Description3",  Priority.HIGH),
-                    new Task("Forth",  "Description4",  Priority.MEDIUM))
+                    new Task("First", "Description1", TaskPriority.LOW),
+                    new Task("Second", "Description2", TaskPriority.LOW),
+                    new Task("Third", "Description3", TaskPriority.HIGH),
+                    new Task("Forth", "Description4", TaskPriority.MEDIUM))
 
     );
 
@@ -36,12 +40,12 @@ public class TaskManagement {
         final String fileName = "Store.dat";
 
         try {
-            
+
             FileOutputStream fileOutputStream = new FileOutputStream(filePath + fileName); // Store.dat File
             ObjectOutputStream out = new ObjectOutputStream(fileOutputStream);
-            
+
             out.writeObject(tasks);
-            
+
             out.close();
             fileOutputStream.close();
         } catch (IOException e) {
@@ -57,12 +61,12 @@ public class TaskManagement {
         final String fileName = "Store.dat";
 
         try {
-            
+
             FileInputStream fileInputStream = new FileInputStream(filePath + fileName); // Store.dat File
             ObjectInputStream in = new ObjectInputStream(fileInputStream);
-            
+
             tasks = (ArrayList<Task>) in.readObject();
-            
+
             in.close();
             fileInputStream.close();
         } catch (EOFException eof) {
@@ -83,10 +87,10 @@ public class TaskManagement {
         final String filePath = "C:\\Users\\Risha\\Desktop\\CLI Todo App\\CLI-Todo-App\\todo\\src\\main\\resources\\";
         final String fileName = "Store.dat";
 
-        File datFile = new File(filePath + fileName); //Store.dat File
+        File datFile = new File(filePath + fileName); // Store.dat File
 
         if (datFile.exists()) {
-            
+
             boolean deleted = datFile.delete();
             if (deleted) {
                 System.out.println("PREVIOUS SESSION DELETED SUCCESSFULLY!!");
@@ -133,9 +137,46 @@ public class TaskManagement {
     }
 
     public static void showTasks(String command) {
+        if (AttributePatternMatcher.getAttributeString(command, AttributeSyntax.FILTER)
+                .equals(AttributeSyntax.FILTER.getAttributeName())) {
+            String filter = command.substring(command.indexOf(' ', command.indexOf("-s")) + 1, command.length());
+            filter = filter.toUpperCase();
+            if (filter.equals(TaskStatus.COMPLETED.getStatusName())) {
+                System.out.println();
+                tasks.stream()
+                        .filter(task -> task.getStatus() == TaskStatus.COMPLETED)
+                        .sorted()
+                        .forEach(System.out::println);
+                return;
+            } else if (filter.equals(TaskStatus.INCOMEPLETE.getStatusName())) {
+                System.out.println();
+                tasks.stream()
+                        .filter(task -> task.getStatus() == TaskStatus.INCOMEPLETE)
+                        .sorted()
+                        .forEach(System.out::println);
+                return;
+            } else {
+                System.out.println("WARNING: WRONG ATTRIBUTE OR WRONG SYNTAX!!");
+                return;
+            }
+        }
         Collections.sort(tasks);
+        System.out.println();
         for (Task task : tasks) {
             System.out.println(task);
+        }
+    }
+
+    public static void clearTerminal(){
+        final String os = System.getProperty("os.name");
+        try {
+            if (os.contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                Runtime.getRuntime().exec("clear");
+            }
+        } catch (Exception e) {
+            System.out.println("ERROR: INTERRUPTED EXCEPTION!!");
         }
     }
 
