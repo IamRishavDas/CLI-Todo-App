@@ -23,10 +23,10 @@ public class TaskManagement {
 
             // temproray testing data
             Arrays.asList(
-                    new Task("First", "Description1", TaskPriority.LOW),
+                    new Task("First",  "Description1", TaskPriority.LOW),
                     new Task("Second", "Description2", TaskPriority.LOW),
-                    new Task("Third", "Description3", TaskPriority.HIGH),
-                    new Task("Forth", "Description4", TaskPriority.MEDIUM))
+                    new Task("Third",  "Description3", TaskPriority.HIGH),
+                    new Task("Forth",  "Description4", TaskPriority.MEDIUM))
 
     );
 
@@ -167,6 +167,7 @@ public class TaskManagement {
         }
     }
 
+    @SuppressWarnings("deprecation")
     public static void clearTerminal(){
         final String os = System.getProperty("os.name");
         try {

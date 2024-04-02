@@ -9,6 +9,7 @@ Commands ---->
     SAVE   ("save",   "save no attribute needed"),
     LOAD   ("load",   "load no attribute needed"),
     DELETE ("delete,  "delete no attribute needed"),
+    CLEAR  ("clear,   "clear no attribute needed"),
     EXIT   ("exit",   "exit no attribute needed")
 
 

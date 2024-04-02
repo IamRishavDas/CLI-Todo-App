@@ -3,7 +3,9 @@ package com.todo.Syntax;
 
 
 public enum AttributeSyntax {
-    FILTER("-s", "for filtering between COMPLETE && INCOMPLETE tasks", ".*\\s-s\\b.*");
+    FILTER          ("-s", "for filtering between COMPLETE && INCOMPLETE tasks", ".*\\s-s\\b.*"),
+    DESCRIPTION     ("-d", "for adding description to a task",                   ".*\\s-d\\b.*"),
+    PRIORITY        ("-p", "for adding priority to a task",                      ".*\\s-p\\b.*");
 
     private String attributeName;
     private String attributeProperty;
