@@ -1,6 +1,7 @@
 package com.todo.TaskOperations;
 
 import java.util.List;
+import java.util.Stack;
 
 import com.todo.PatternMatcher.AttributePatternMatcher;
 import com.todo.Syntax.AttributeSyntax;
@@ -125,15 +126,30 @@ public class TaskManagement {
     }
 
     public static void addTask(String command) {
-        System.out.println("TODO: ADD IMPLEMENTED YET");
+        Stack<String> stack = new Stack<>();
+        String taskName = "";
+        boolean isNameFound = false;
+
+        // finding the task name inside quotation
+        for(int i=0; i<command.length() && !isNameFound; i++){
+            if(command.charAt(i) == '\"'){
+                for(int startParsingName = i + 1; startParsingName < command.length(); startParsingName++ ){
+                    if(command.charAt(startParsingName) == '\"') break;
+                    taskName += command.charAt(startParsingName);
+                }
+                isNameFound = true;
+            }
+        }
+
+        System.out.println(taskName);
     }
 
     public static void removeTask(String command) {
-        System.out.println("TODO: REMOVE IMPLEMENTED YET");
+        System.out.println("TODO: REMOVE NOT IMPLEMENTED YET");
     }
 
     public static void markTask(String command) {
-        System.out.println("TODO: MARK IMPLEMENTED YET");
+        System.out.println("TODO: MARK NOT IMPLEMENTED YET");
     }
 
     public static void showTasks(String command) {

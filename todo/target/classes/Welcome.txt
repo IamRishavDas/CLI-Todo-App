@@ -2,9 +2,9 @@
 
 Commands ---->
 
-    ADD    ("add",    "add <task name> <optional> -d <description> -p <priority = LOW || MEDIUM || HIGH>"),
-    REMOVE ("remove", "remove <task name>"),
-    MARK   ("mark",   "mark <task name> -s <COMPLETED || INCOMEPLETE>"),
+    ADD    ("add",    "add <"task name"> <optional> -d <description> -p <priority = LOW || MEDIUM || HIGH>"),
+    REMOVE ("remove", "remove <"task name">"),
+    MARK   ("mark",   "mark <"task name"> -s <COMPLETED || INCOMEPLETE>"),
     SHOW   ("show",   "show <optional>  -s <COMPLETED || INCOMEPLETE>"),
     SAVE   ("save",   "save no attribute needed"),
     LOAD   ("load",   "load no attribute needed"),
