@@ -1,7 +1,6 @@
 package com.todo.TaskOperations;
 
 import java.util.List;
-import java.util.Stack;
 
 import com.todo.PatternMatcher.AttributePatternMatcher;
 import com.todo.Syntax.AttributeSyntax;
@@ -126,7 +125,6 @@ public class TaskManagement {
     }
 
     public static void addTask(String command) {
-        Stack<String> stack = new Stack<>();
         String taskName = "";
         boolean isNameFound = false;
 

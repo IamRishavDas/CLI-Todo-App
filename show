@@ -1,0 +1,77 @@
+[33mcommit f13776de9e9ba91e25894d3f33696cc50bfb4116[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Rishav <140265067+IamRishavDas@users.noreply.github.com>
+Date:   Thu Apr 4 00:53:58 2024 +0530
+
+    added the TaskName parsing inside the addTask function
+
+[33mcommit d999e3f53e6125796cdba1a523f22f4efb6445e7[m
+Author: Rishav <140265067+IamRishavDas@users.noreply.github.com>
+Date:   Wed Apr 3 01:32:24 2024 +0530
+
+    Added new Attribute list
+
+[33mcommit cfe2981c118de8a16485df02293ec2a9588839ef[m
+Author: Rishav <140265067+IamRishavDas@users.noreply.github.com>
+Date:   Wed Apr 3 01:17:02 2024 +0530
+
+    fixed the dir structure && add the show filter feature with a new operation clear
+
+[33mcommit a9f0a95cf499eecc164f654a8527a21754ec3b36[m
+Author: Rishav <140265067+IamRishavDas@users.noreply.github.com>
+Date:   Mon Apr 1 20:15:42 2024 +0530
+
+    java 22 is introduced in pom.xml
+
+[33mcommit 91eef31e21a3a2460ec03720208f0f71a06196de[m
+Author: Rishav <140265067+IamRishavDas@users.noreply.github.com>
+Date:   Mon Apr 1 20:13:46 2024 +0530
+
+    formatter the Pattern.java
+
+[33mcommit 9b1d2f46c13bbd40218ff526a2b5fe88cde03ba5[m
+Author: Rishav <140265067+IamRishavDas@users.noreply.github.com>
+Date:   Mon Apr 1 20:06:16 2024 +0530
+
+    added the unimplementd doc update!!
+
+[33mcommit c2e7072ede7b5625176d7d3937b9fa3f3e5a463a[m
+Author: Rishav <140265067+IamRishavDas@users.noreply.github.com>
+Date:   Mon Apr 1 19:54:28 2024 +0530
+
+    Added the new documention
+
+[33mcommit 57b8b46782d8b65274d4bb78723d677cc7a35ac1[m
+Author: Rishav <140265067+IamRishavDas@users.noreply.github.com>
+Date:   Mon Apr 1 19:35:17 2024 +0530
+
+    added the sorted showTask according to the high priority
+
+[33mcommit 53154e0d696150f64f4921ac341df01bea0c1862[m
+Author: Rishav <140265067+IamRishavDas@users.noreply.github.com>
+Date:   Mon Apr 1 14:34:51 2024 +0530
+
+    seralization of the Tasks and the deserialization is added into the TaskManagement.java
+
+[33mcommit 394de9c8ece1bd08c6bf750ebc3a73b23bdbf5ab[m
+Author: Rishav <140265067+IamRishavDas@users.noreply.github.com>
+Date:   Mon Apr 1 13:27:41 2024 +0530
+
+    add the serialization in the TaskManagement.java for storing the Task objects
+
+[33mcommit f1aa3dd095fee00c45562e50c12553c911187cae[m
+Author: Rishav <140265067+IamRishavDas@users.noreply.github.com>
+Date:   Mon Apr 1 13:02:58 2024 +0530
+
+    fixed the regular expressions for matching the white spaces in the begining
+
+[33mcommit c29ce591a0cee33de8cf7cd08c4c582c26de18a7[m
+Author: Rishav <140265067+IamRishavDas@users.noreply.github.com>
+Date:   Mon Apr 1 12:53:50 2024 +0530
+
+    added all the the functonal files only the functions to be implemented
+
+[33mcommit cf04d0742775b5a711e8573149f870c06dadc650[m
+Author: Rishav Das <140265067+IamRishavDas@users.noreply.github.com>
+Date:   Mon Apr 1 00:31:40 2024 +0530
+
+    Initial commit
