@@ -4,15 +4,13 @@ Commands ---->
 
     ADD    ("add",    "add <"task name"> <optional> -d <description> -p <priority = LOW || MEDIUM || HIGH>"),
     REMOVE ("remove", "remove <"task name">"),
-    MARK   ("mark",   "mark <"task name"> -s <COMPLETED || INCOMEPLETE>"),
-    SHOW   ("show",   "show <optional>  -s <COMPLETED || INCOMEPLETE>"),
+    MARK   ("mark",   "mark <"task name"> -s <"COMPLETED" || "INCOMEPLETE">"),
+    SHOW   ("show",   "show <optional>  -s <"COMPLETED" || "INCOMEPLETE">"),
     SAVE   ("save",   "save no attribute needed"),
     LOAD   ("load",   "load no attribute needed"),
     DELETE ("delete,  "delete no attribute needed"),
     CLEAR  ("clear,   "clear no attribute needed"),
     EXIT   ("exit",   "exit no attribute needed")
 
-
-    Note: Only the SHOW, LOAD, DELETE, EXIT is implementes partially for Temporary Data Defined in the program
 
 --------------------------------------------------------------------------------------------------------------------
