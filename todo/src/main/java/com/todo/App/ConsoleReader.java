@@ -3,6 +3,9 @@ package com.todo.App;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.nio.file.Files;
 import java.util.Scanner;
 
 import com.todo.PatternMatcher.CommandPatternMatcher;
@@ -29,12 +32,13 @@ public class ConsoleReader {
             }
         }
     }
-    public void showWelcomeScreen() throws FileNotFoundException{
-        final String filePath = "C:/Users/Risha/Desktop/CLI Todo App/CLI-Todo-App/todo/src/main/java/com/todo/UtilityFiles/";
-        final String fileName = "Welcome.txt";
+    public void showWelcomeScreen() throws FileNotFoundException, IOException{
 
-        File file = new File(filePath + fileName);
-        Scanner scanner = new Scanner(file);
+        final String filePath = System.getProperty("user.dir") + File.separator + "todo" + File.separator + "src" + File.separator + "main" + File.separator +"java" + File.separator + "com" + File.separator + "todo"  + File.separator + "UtilityFiles" + File.separator + "Welcome.txt";
+
+        File welcomeFile = new File(filePath);
+
+        Scanner scanner = new Scanner(welcomeFile);
         while (scanner.hasNext()) {
             System.out.println(scanner.nextLine());
         }
