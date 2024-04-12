@@ -36,7 +36,7 @@ public class TaskManagement {
 
     public static void saveTasks() {
 
-        final String filePath = "C:\\Users\\Risha\\Desktop\\CLI Todo App\\CLI-Todo-App\\todo\\src\\main\\resources\\";
+        final String filePath = "C:/Users/Risha/Desktop/CLI Todo App/CLI-Todo-App/todo/src/main/java/com/todo/UtilityFiles/";
         final String fileName = "Store.dat";
 
         try {
@@ -57,7 +57,7 @@ public class TaskManagement {
     @SuppressWarnings("unchecked")
     public static void loadTasks() {
 
-        final String filePath = "C:\\Users\\Risha\\Desktop\\CLI Todo App\\CLI-Todo-App\\todo\\src\\main\\resources\\";
+        final String filePath = "C:/Users/Risha/Desktop/CLI Todo App/CLI-Todo-App/todo/src/main/java/com/todo/UtilityFiles/";
         final String fileName = "Store.dat";
 
         try {
@@ -84,7 +84,7 @@ public class TaskManagement {
 
     public static void deleteSavedTasks() {
 
-        final String filePath = "C:\\Users\\Risha\\Desktop\\CLI Todo App\\CLI-Todo-App\\todo\\src\\main\\resources\\";
+        final String filePath = "C:/Users/Risha/Desktop/CLI Todo App/CLI-Todo-App/todo/src/main/java/com/todo/UtilityFiles/";
         final String fileName = "Store.dat";
 
         File datFile = new File(filePath + fileName); // Store.dat File
@@ -106,7 +106,7 @@ public class TaskManagement {
 
     private static void createNewDatFile() {
 
-        final String filePath = "C:\\Users\\Risha\\Desktop\\CLI Todo App\\CLI-Todo-App\\todo\\src\\main\\resources\\";
+        final String filePath = "C:/Users/Risha/Desktop/CLI Todo App/CLI-Todo-App/todo/src/main/java/com/todo/UtilityFiles/";
         final String fileName = "Store.dat";
 
         File newDatFile = new File(filePath + fileName);
