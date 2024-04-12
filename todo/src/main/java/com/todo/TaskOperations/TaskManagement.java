@@ -15,6 +15,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 
 public class TaskManagement {
 
@@ -203,7 +204,32 @@ public class TaskManagement {
     }
 
     public static void removeTask(String command) {
-        System.out.println("TODO: REMOVE NOT IMPLEMENTED YET");
+        String taskName = "";
+        boolean isTaskNameFound = false;
+
+        for (int i = 0; i < command.length() && !isTaskNameFound; i++) {
+            if (command.charAt(i) == '\"') {
+                for (int startParsingName = i + 1; startParsingName < command.length(); startParsingName++) {
+                    if (command.charAt(startParsingName) == '\"')
+                        break;
+                    taskName += command.charAt(startParsingName);
+                }
+                isTaskNameFound = true;
+            }
+        }
+
+        if (!isTaskNameFound) {
+            System.out.println("ERROR: CHECK THE COMMAND SYNTAX!! TASK NAME NOT FOUND");
+            return;
+        }
+
+        Iterator<Task> it = tasks.iterator();
+        while(it.hasNext()){
+            Task task = it.next();
+            if(task.getName().equals(taskName)){
+                it.remove();
+            }
+        }
     }
 
     public static void markTask(String command) {
