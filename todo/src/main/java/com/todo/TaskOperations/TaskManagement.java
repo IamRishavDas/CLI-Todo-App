@@ -233,7 +233,46 @@ public class TaskManagement {
     }
 
     public static void markTask(String command) {
-        System.out.println("TODO: MARK NOT IMPLEMENTED YET");
+    
+        String taskName = "";
+        boolean isTaskNameFound = false;
+
+        for (int i = 0; i < command.length() && !isTaskNameFound; i++) {
+            if (command.charAt(i) == '\"') {
+                for (int startParsingName = i + 1; startParsingName < command.length(); startParsingName++) {
+                    if (command.charAt(startParsingName) == '\"')
+                        break;
+                    taskName += command.charAt(startParsingName);
+                }
+                isTaskNameFound = true;
+            }
+        }
+
+        if (!isTaskNameFound) {
+            System.out.println("ERROR: CHECK THE COMMAND SYNTAX!! NAME NOT FOUND");
+            return;
+        }
+
+        String status = command.substring(command.indexOf(' ', command.indexOf("-s")) + 1, command.length());
+        status = status.toUpperCase();
+
+        System.out.println(status);
+
+        TaskStatus taskStatus = getStatus(status);
+        Iterator<Task> it = tasks.iterator();
+        while(it.hasNext()){
+            Task task = it.next();
+            if(task.getName().equals(taskName)){
+                task.setStatus(taskStatus);
+            }
+        }
+    }
+
+    private static TaskStatus getStatus(String status) {
+        status = status.toUpperCase();
+        if(status.equals("COMPLETED") || status.equals("\"COMPLETED\""))         return TaskStatus.COMPLETED;
+        else if(status.equals("INCOMPLETE") || status.equals("\"INCOMPLETED\"")) return TaskStatus.INCOMEPLETE;
+        else                                                                                       return TaskStatus.INCOMEPLETE;
     }
 
     public static void showTasks(String command) {
