@@ -17,6 +17,10 @@ public class Task implements Comparable<Task>, Serializable{
         this(name);
         this.description = description;
     }
+    public Task(String name, TaskPriority priority){
+        this(name);
+        this.priority = priority;
+    }
     public Task(String name, String description, TaskPriority priority){
         this(name, description);
         this.priority = priority;

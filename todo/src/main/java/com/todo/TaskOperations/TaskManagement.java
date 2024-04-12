@@ -14,21 +14,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 public class TaskManagement {
 
-    private static List<Task> tasks = new ArrayList<Task>(
-
-            // temproray testing data
-            Arrays.asList(
-                    new Task("First",  "Description1", TaskPriority.LOW),
-                    new Task("Second", "Description2", TaskPriority.LOW),
-                    new Task("Third",  "Description3", TaskPriority.HIGH),
-                    new Task("Forth",  "Description4", TaskPriority.MEDIUM))
-
-    );
+    private static List<Task> tasks = new ArrayList<Task>();
 
     public List<Task> getTasks() {
         return TaskManagement.tasks;
@@ -126,20 +116,90 @@ public class TaskManagement {
 
     public static void addTask(String command) {
         String taskName = "";
-        boolean isNameFound = false;
+        boolean isTaskNameFound = false;
 
-        // finding the task name inside quotation
-        for(int i=0; i<command.length() && !isNameFound; i++){
-            if(command.charAt(i) == '\"'){
-                for(int startParsingName = i + 1; startParsingName < command.length(); startParsingName++ ){
-                    if(command.charAt(startParsingName) == '\"') break;
+        for (int i = 0; i < command.length() && !isTaskNameFound; i++) {
+            if (command.charAt(i) == '\"') {
+                for (int startParsingName = i + 1; startParsingName < command.length(); startParsingName++) {
+                    if (command.charAt(startParsingName) == '\"')
+                        break;
                     taskName += command.charAt(startParsingName);
                 }
-                isNameFound = true;
+                isTaskNameFound = true;
             }
         }
 
-        System.out.println(taskName);
+        if (!isTaskNameFound) {
+            System.out.println("ERROR: CHECK THE COMMAND SYNTAX!! NAME NOT FOUND");
+            return;
+        }
+
+        String taskDescription = "";
+        boolean isDescriptionFound = false;
+
+        if (AttributePatternMatcher.getAttributeString(command, AttributeSyntax.DESCRIPTION)
+                .equals(AttributeSyntax.DESCRIPTION.getAttributeName())) {
+            int descriptonIndex = command.indexOf(AttributeSyntax.DESCRIPTION.getAttributeName());
+            for (int i = descriptonIndex; i < command.length() && !isDescriptionFound; i++) {
+                if (command.charAt(i) == '\"') {
+                    for (int parseDescription = i + 1; parseDescription < command.length(); parseDescription++) {
+                        if (command.charAt(parseDescription) == '\"')
+                            break;
+                        taskDescription += command.charAt(parseDescription);
+                    }
+                    isDescriptionFound = true;
+                }
+            }
+        }
+
+        String taskPriorityString = "";
+        boolean isPriorityFound = false;
+
+        if (AttributePatternMatcher.getAttributeString(command, AttributeSyntax.PRIORITY)
+                .equals(AttributeSyntax.PRIORITY.getAttributeName())) {
+            int priorityIndex = command.indexOf(AttributeSyntax.PRIORITY.getAttributeName());
+            for (int i = priorityIndex; i < command.length() && !isPriorityFound; i++) {
+                if (command.charAt(i) == '\"') {
+                    for (int parsePriority = i + 1; parsePriority < command.length(); parsePriority++) {
+                        if (command.charAt(parsePriority) == '\"')
+                            break;
+                        taskPriorityString += command.charAt(parsePriority);
+                    }
+                    isPriorityFound = true;
+                }
+            }
+        }
+
+        TaskPriority taskPriority = isIn(taskPriorityString);
+
+        if (isTaskNameFound && isDescriptionFound && isPriorityFound) {
+            tasks.add(new Task(taskName, taskDescription, taskPriority));
+            return;
+        } else if (isTaskNameFound && isDescriptionFound) {
+            tasks.add(new Task(taskName, taskDescription));
+            return;
+        } else if (isTaskNameFound && isPriorityFound){
+            tasks.add(new Task(taskName, taskPriority));
+            return;
+        } else if (isTaskNameFound) {
+            tasks.add(new Task(taskName));
+            return;
+        }
+
+    }
+
+    private static TaskPriority isIn(String input) {
+        if (input != null) {
+            input = input.toUpperCase();
+
+            if (input.equals("MEDIUM"))
+                return TaskPriority.MEDIUM;
+            else if (input.equals("HIGH"))
+                return TaskPriority.HIGH;
+            else
+                return TaskPriority.LOW;
+        } else
+            return TaskPriority.LOW;
     }
 
     public static void removeTask(String command) {
@@ -161,6 +221,7 @@ public class TaskManagement {
                         .filter(task -> task.getStatus() == TaskStatus.COMPLETED)
                         .sorted()
                         .forEach(System.out::println);
+                System.out.println();
                 return;
             } else if (filter.equals(TaskStatus.INCOMEPLETE.getStatusName())) {
                 System.out.println();
@@ -168,6 +229,7 @@ public class TaskManagement {
                         .filter(task -> task.getStatus() == TaskStatus.INCOMEPLETE)
                         .sorted()
                         .forEach(System.out::println);
+                System.out.println();
                 return;
             } else {
                 System.out.println("WARNING: WRONG ATTRIBUTE OR WRONG SYNTAX!!");
@@ -179,10 +241,11 @@ public class TaskManagement {
         for (Task task : tasks) {
             System.out.println(task);
         }
+        System.out.println();
     }
 
     @SuppressWarnings("deprecation")
-    public static void clearTerminal(){
+    public static void clearTerminal() {
         final String os = System.getProperty("os.name");
         try {
             if (os.contains("Windows")) {
