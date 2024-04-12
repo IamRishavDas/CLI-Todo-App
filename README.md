@@ -4,10 +4,18 @@ A generic purpose Todo App with command Line interface
 
 # Commands
 ## add: for adding a new task
-## attributes: 
 add syntax:
 ```
 add "task name"
+```
+## attributes: 
+### -d: description
+```
+add "task name" -d "description"
+```
+### -p: priority
+```
+add "task name" -d "description" -p priority
 ```
 
 
