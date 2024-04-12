@@ -3,9 +3,6 @@ package com.todo.App;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.nio.file.Files;
 import java.util.Scanner;
 
 import com.todo.PatternMatcher.CommandPatternMatcher;
