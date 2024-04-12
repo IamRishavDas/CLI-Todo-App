@@ -256,8 +256,6 @@ public class TaskManagement {
         String status = command.substring(command.indexOf(' ', command.indexOf("-s")) + 1, command.length());
         status = status.toUpperCase();
 
-        System.out.println(status);
-
         TaskStatus taskStatus = getStatus(status);
         Iterator<Task> it = tasks.iterator();
         while(it.hasNext()){
