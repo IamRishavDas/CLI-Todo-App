@@ -78,29 +78,30 @@ exit
 https://github.com/IamRishavDas/CLI-Todo-App/assets/140265067/fd493cae-080d-4686-8c64-dc088967463a
 
 
+# Adding a JAR File to Environment Variables (Windows)
+When working with Java applications, you might want to run JAR files directly from the command line without specifying the full path. To achieve this, follow these steps:
 
-To add your myapp.bat file to your environment variables on Windows, follow these steps:
+## 1. Create a Batch Script:
+## Create a batch script (let’s call it myapp.bat) that runs your JAR file using the java -jar command. For example:
+```
+@echo off
+java -jar "C:\path\to\your\myapp.jar"
+```
 
-Locate the Directory:
-First, ensure that your myapp.bat file is saved in a directory of your choice. For example, you might have it in C:\Program Files\myapp.
-Edit Environment Variables:
-Press the Windows key + R to open the Run dialog.
-Type sysdm.cpl and hit Enter. This opens the System Properties window.
-Go to the Advanced tab and click the Environment Variables button.
-Add to User or System Variables:
-In the Environment Variables window, you’ll see two sections: User variables and System variables.
-Choose the appropriate section based on your preference:
-User variables: These apply only to your user account.
-System variables: These apply to all users on the system.
-Click New to add a new variable.
-Set Variable Name and Value:
-For Variable name, enter a name for your application (e.g., MYAPP).
-For Variable value, enter the full path to your myapp.bat file (e.g., C:\Program Files\myapp\myapp.bat).
-Apply Changes:
-Click OK to close the Environment Variables window.
-Close any open command prompts or terminals and reopen them to apply the changes.
-Test the Environment Variable:
+Save this batch file in a directory of your choice.
+## 2. Update the PATH Environment Variable:
+Add the directory containing your myapp.bat file to the system’s PATH environment variable:
+Open the Control Panel.
+Navigate to System and Security > System > Advanced system settings > Environment Variables.
+In the System variables section, find the PATH variable and click Edit.
+Add the path to the directory where your myapp.bat file is located (e.g., C:\path\to\your\directory).
+Click OK to save the changes.
+## 3. Test Your Setup:
 Open a new command prompt or PowerShell window.
-Type myapp and hit Enter. If your myapp.bat script runs successfully, the environment variable is set up correctly.
+Type myapp and hit Enter. If everything is set up correctly, your JAR file should execute.
+## 4. Optional Recommendations:
+Consider adding a user environment variable named JAVA_TOOL_OPTIONS with the value -Dfile.encoding="UTF-8". This ensures consistent character encoding for Java applications.
+Remove the entry C:\ProgramData\Oracle\Java\javapath; from the system’s PATH variable to maintain a consistent environment.
+Remember to replace myapp.jar and the paths with your actual JAR file and directory. This approach allows you to run your Java application by simply typing its name in the command prompt or PowerShell.
 
 
