@@ -3,7 +3,7 @@ A generic purpose Todo App with command Line interface
 
 
 # Commands
-## add: for adding a new task
+## ⚪add: for adding a new task
 add syntax:
 ```
 add "task name"
@@ -18,13 +18,13 @@ add "task name" -d "description"
 add "task name" -d "description" -p priority
 ```
 
-## remove: remove an existing task
+## ⚪remove: remove an existing task
 remove syntax:
 ```
 remove "task name"
 ```
 
-## mark: for marking a task as completed or incomplete
+## ⚪mark: for marking a task as completed or incomplete
 mark syntax:
 ```
 mark "task name" -s "completed"
