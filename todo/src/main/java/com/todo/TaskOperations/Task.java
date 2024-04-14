@@ -3,7 +3,7 @@ package com.todo.TaskOperations;
 import java.io.Serializable;
 
 
-public class Task implements Comparable<Task>, Serializable{
+public class Task implements Comparable<Task>, Serializable {
 
     private String name;
     private String description;

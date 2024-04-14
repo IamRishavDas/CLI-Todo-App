@@ -16,16 +16,16 @@ public class ConsoleReader {
         while (!exit) {
             String command = System.console().readLine(":");
             switch (CommandPatternMatcher.getCommandString(command)) {
-                case "add" -> TaskManagement.addTask(command);
-                case "show" -> TaskManagement.showTasks(command);
-                case "mark" -> TaskManagement.markTask(command);
+                case "add"    -> TaskManagement.addTask(command);
+                case "show"   -> TaskManagement.showTasks(command);
+                case "mark"   -> TaskManagement.markTask(command);
                 case "remove" -> TaskManagement.removeTask(command);
-                case "save" -> TaskManagement.saveTasks();
-                case "load" -> TaskManagement.loadTasks();
+                case "save"   -> TaskManagement.saveTasks();
+                case "load"   -> TaskManagement.loadTasks();
                 case "delete" -> TaskManagement.deleteSavedTasks();
-                case "clear" -> TaskManagement.clearTerminal();
-                case "exit" -> exit = true;
-                default -> System.out.println("NOT SUITABLE COMMAND FOUND!!");
+                case "clear"  -> TaskManagement.clearTerminal();
+                case "exit"   -> exit = true;
+                default       -> System.out.println("NOT SUITABLE COMMAND FOUND!!");
             }
         }
     }
