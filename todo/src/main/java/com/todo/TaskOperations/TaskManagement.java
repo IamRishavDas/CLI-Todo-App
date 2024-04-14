@@ -223,13 +223,17 @@ public class TaskManagement {
             return;
         }
 
+        boolean isAtleastOneTaskDeleted = false;
         Iterator<Task> it = tasks.iterator();
         while(it.hasNext()){
             Task task = it.next();
             if(task.getName().equals(taskName)){
                 it.remove();
+                isAtleastOneTaskDeleted = true;
             }
         }
+
+        if(!isAtleastOneTaskDeleted) System.out.println("WARNING: NO SUCH TASK NAME FOUND IN TODO LIST!!");
     }
 
     public static void markTask(String command) {
