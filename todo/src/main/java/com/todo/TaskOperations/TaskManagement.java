@@ -12,7 +12,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
+import java.net.URL;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,8 +28,14 @@ public class TaskManagement {
 
     public static void saveTasks() {
 
+
+        // URL loc = TaskManagement.class.getClassLoader().getResource("Store.dat");
+
         final String filePath = System.getProperty("user.dir") + File.separator + "todo" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator;
         final String fileName = "Store.dat";
+
+        // System.out.println(loc.getPath());
+        // System.out.println(filePath + fileName);
 
         try {
 
