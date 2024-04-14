@@ -1,6 +1,5 @@
 package com.todo.TaskOperations;
 
-import java.util.List;
 
 import com.todo.PatternMatcher.AttributePatternMatcher;
 import com.todo.Syntax.AttributeSyntax;
@@ -13,6 +12,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
