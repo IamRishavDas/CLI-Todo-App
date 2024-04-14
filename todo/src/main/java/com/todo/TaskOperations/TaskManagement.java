@@ -282,7 +282,8 @@ public class TaskManagement {
                 .equals(AttributeSyntax.FILTER.getAttributeName())) {
             String filter = command.substring(command.indexOf(' ', command.indexOf("-s")) + 1, command.length());
             filter = filter.toUpperCase();
-            if (filter.equals(TaskStatus.COMPLETED.getStatusName())) {
+            // System.out.println(filter);
+            if (filter.equals(TaskStatus.COMPLETED.getStatusName()) || filter.equals("\"COMPLETED\"")) {
                 System.out.println();
                 tasks.stream()
                         .filter(task -> task.getStatus() == TaskStatus.COMPLETED)
@@ -290,7 +291,7 @@ public class TaskManagement {
                         .forEach(System.out::println);
                 System.out.println();
                 return;
-            } else if (filter.equals(TaskStatus.INCOMEPLETE.getStatusName())) {
+            } else if (filter.equals(TaskStatus.INCOMEPLETE.getStatusName()) || filter.equals("\"INCOMPLETE\"")) {
                 System.out.println();
                 tasks.stream()
                         .filter(task -> task.getStatus() == TaskStatus.INCOMEPLETE)
