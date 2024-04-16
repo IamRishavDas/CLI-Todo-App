@@ -4,6 +4,10 @@ A generic purpose Todo App with command Line interface
 
 
 
+https://github.com/IamRishavDas/CLI-Todo-App/assets/140265067/dad12d21-8258-4065-b106-cf64e473f26f
+
+
+
 
 # Commands
 ## ⚪add: for adding a new task
