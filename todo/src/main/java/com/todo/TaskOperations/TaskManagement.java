@@ -1,6 +1,5 @@
 package com.todo.TaskOperations;
 
-
 import com.todo.PatternMatcher.AttributePatternMatcher;
 import com.todo.Syntax.AttributeSyntax;
 
@@ -12,7 +11,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.net.URL;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,22 +18,13 @@ import java.util.Iterator;
 
 public class TaskManagement {
 
+    final static String filePath = System.getProperty("user.dir") + File.separator + "todo" + File.separator + "src"
+            + File.separator + "main" + File.separator + "resources" + File.separator;
+    final static String fileName = "Store.dat";
+
     private static List<Task> tasks = new ArrayList<Task>();
 
-    public List<Task> getTasks() {
-        return TaskManagement.tasks;
-    }
-
     public static void saveTasks() {
-
-
-        // URL loc = TaskManagement.class.getClassLoader().getResource("Store.dat");
-
-        final String filePath = System.getProperty("user.dir") + File.separator + "todo" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator;
-        final String fileName = "Store.dat";
-
-        // System.out.println(loc.getPath());
-        // System.out.println(filePath + fileName);
 
         try {
 
@@ -55,9 +44,6 @@ public class TaskManagement {
     @SuppressWarnings("unchecked")
     public static void loadTasks() {
 
-        final String filePath = System.getProperty("user.dir") + File.separator + "todo" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator;
-        final String fileName = "Store.dat";
-
         try {
 
             FileInputStream fileInputStream = new FileInputStream(filePath + fileName); // Store.dat File
@@ -69,9 +55,9 @@ public class TaskManagement {
             fileInputStream.close();
         } catch (EOFException eof) {
             System.out.println("WARNING: PREVIOUS SESSION DATA IS NOT STORED!!");
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException fnf) {
             System.out.println("THE PREVIOUS SESSION FILE IS MISSING!!");
-        } catch (IOException e) {
+        } catch (IOException io) {
             System.out.println("WARNING: SOMETHING WRONG IS HAPPENING I DON'T KNOW WHAT IS THE ACTUAL PROBLEM");
         } catch (ClassNotFoundException ex) {
             System.out.println("WARING: THE FOLLOWING CLASS IS NOT FOUND!!");
@@ -81,9 +67,6 @@ public class TaskManagement {
     }
 
     public static void deleteSavedTasks() {
-
-        final String filePath = System.getProperty("user.dir") + File.separator + "todo" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator;
-        final String fileName = "Store.dat";
 
         File datFile = new File(filePath + fileName); // Store.dat File
 
@@ -96,16 +79,14 @@ public class TaskManagement {
                 System.out.println("FAILED TO DELETE THE PREVIOUS SESSION!!");
             }
         } else {
-            System.out.println("WARNING: FILE NOT EXIST!!");
+            System.out.println("WARNING: FILE NOT EXIST (GO THROUGH THE GITHUB REPO OR REPORT A ISSUE)!!");
         }
         createNewDatFile();
         return;
     }
 
-    private static void createNewDatFile() {
 
-        final String filePath = System.getProperty("user.dir") + File.separator + "todo" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator;
-        final String fileName = "Store.dat";
+    private static void createNewDatFile() {
 
         File newDatFile = new File(filePath + fileName);
 
@@ -186,7 +167,7 @@ public class TaskManagement {
         } else if (isTaskNameFound && isDescriptionFound) {
             tasks.add(new Task(taskName, taskDescription));
             return;
-        } else if (isTaskNameFound && isPriorityFound){
+        } else if (isTaskNameFound && isPriorityFound) {
             tasks.add(new Task(taskName, taskPriority));
             return;
         } else if (isTaskNameFound) {
@@ -232,19 +213,20 @@ public class TaskManagement {
 
         boolean isAtleastOneTaskDeleted = false;
         Iterator<Task> it = tasks.iterator();
-        while(it.hasNext()){
+        while (it.hasNext()) {
             Task task = it.next();
-            if(task.getName().equals(taskName)){
+            if (task.getName().equals(taskName)) {
                 it.remove();
                 isAtleastOneTaskDeleted = true;
             }
         }
 
-        if(!isAtleastOneTaskDeleted) System.out.println("WARNING: NO SUCH TASK NAME FOUND IN TODO LIST!!");
+        if (!isAtleastOneTaskDeleted)
+            System.out.println("ERROR: NO SUCH TASK NAME FOUND IN TODO LIST!!");
     }
 
     public static void markTask(String command) {
-    
+
         String taskName = "";
         boolean isTaskNameFound = false;
 
@@ -267,30 +249,47 @@ public class TaskManagement {
         String status = command.substring(command.indexOf(' ', command.indexOf("-s")) + 1, command.length());
         status = status.toUpperCase();
 
+        boolean isTaskForMarkedFound = false;
         TaskStatus taskStatus = getStatus(status);
         Iterator<Task> it = tasks.iterator();
-        while(it.hasNext()){
+        while (it.hasNext()) {
             Task task = it.next();
-            if(task.getName().equals(taskName)){
+            if (task.getName().equals(taskName)) {
                 task.setStatus(taskStatus);
+                isTaskForMarkedFound = true;
             }
         }
+
+        if(!isTaskForMarkedFound) System.out.println("ERROR: " + taskName + " NO SUCH TASK FOUND IN THE LIST!!");
     }
 
     private static TaskStatus getStatus(String status) {
         status = status.toUpperCase();
-        if(status.equals("COMPLETED") || status.equals("\"COMPLETED\""))         return TaskStatus.COMPLETED;
-        else if(status.equals("INCOMPLETE") || status.equals("\"INCOMPLETED\"")) return TaskStatus.INCOMEPLETE;
-        else                                                                                       return TaskStatus.INCOMEPLETE;
+        if (status.equals("COMPLETED") || status.equals("\"COMPLETED\""))
+            return TaskStatus.COMPLETED;
+        else if (status.equals("INCOMPLETE") || status.equals("\"INCOMPLETED\""))
+            return TaskStatus.INCOMEPLETE;
+        else
+            return TaskStatus.INCOMEPLETE;
     }
 
     public static void showTasks(String command) {
+
+        if(tasks.size() == 0) {
+            System.out.println("TASK LIST IS EMPTY!!");
+            return;
+        }
+
         if (AttributePatternMatcher.getAttributeString(command, AttributeSyntax.FILTER)
                 .equals(AttributeSyntax.FILTER.getAttributeName())) {
             String filter = command.substring(command.indexOf(' ', command.indexOf("-s")) + 1, command.length());
             filter = filter.toUpperCase();
             // System.out.println(filter);
             if (filter.equals(TaskStatus.COMPLETED.getStatusName()) || filter.equals("\"COMPLETED\"")) {
+                if(countTaskWithGivenStatus(TaskStatus.COMPLETED) == 0){
+                    System.out.println("NO COMPLETED TASK FOUND");
+                    return;
+                }
                 System.out.println();
                 tasks.stream()
                         .filter(task -> task.getStatus() == TaskStatus.COMPLETED)
@@ -299,6 +298,10 @@ public class TaskManagement {
                 System.out.println();
                 return;
             } else if (filter.equals(TaskStatus.INCOMEPLETE.getStatusName()) || filter.equals("\"INCOMPLETE\"")) {
+                if(countTaskWithGivenStatus(TaskStatus.INCOMEPLETE) == 0){
+                    System.out.println("NO INCOMPLETE TASK FOUND");
+                    return;
+                }
                 System.out.println();
                 tasks.stream()
                         .filter(task -> task.getStatus() == TaskStatus.INCOMEPLETE)
@@ -317,6 +320,17 @@ public class TaskManagement {
             System.out.println(task);
         }
         System.out.println();
+
+    }
+
+    private static int countTaskWithGivenStatus(TaskStatus taskStatus){
+        int countOccrance = 0;
+        for(Task task: tasks){
+            if(task.getStatus().equals(taskStatus)){
+                countOccrance++;
+            }
+        }
+        return countOccrance;
     }
 
     @SuppressWarnings("deprecation")

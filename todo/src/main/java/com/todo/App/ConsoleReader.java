@@ -12,8 +12,9 @@ import com.todo.TaskOperations.TaskManagement;
 public class ConsoleReader {
     public ConsoleReader() throws IOException {
         boolean exit = false;
-        showWelcomeScreen();
+        // showWelcomeScreen();
         // TaskManagement.loadTasks();
+        // TaskManagement.clearTerminal();
         while (!exit) {
             String command = System.console().readLine(":");
             switch (CommandPatternMatcher.getCommandString(command)) {
